@@ -1,0 +1,22 @@
+name: vote-app
+location: <your-region>
+type: containerapp
+properties:
+  environmentId: <your-environment-id>
+  configuration:
+    ingress:
+      external: true
+      targetPort: 80
+  template:
+    containers:
+    - image: <your-container-registry>/vote-app:latest
+      name: vote-app
+      env:
+      - name: DB_HOST
+        value: <hostname>
+      - name: DB_NAME
+        value: <database_name>
+      - name: DB_USER
+        value: <username>
+      - name: DB_PASSWORD
+        value: <password>
