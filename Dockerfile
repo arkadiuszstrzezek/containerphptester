@@ -17,3 +17,10 @@ RUN chown -R www-data:www-data /var/www/html
 
 # Udostępnij port 80
 EXPOSE 80
+
+# ENTRYPOINT wymusza uruchomienie startup.php podczas startu kontenera
+ENTRYPOINT ["sh", "-c", "php /var/www/html/startup.php && apache2-foreground"]
+
+# Uruchom worker (worker.php) jako główną komendę
+CMD ["php", "/var/www/html/worker.php"]
+
